@@ -6,7 +6,7 @@ const authroute = require("./routes/auth");
 const userroute = require("./routes/user");
 const postroute = require("./routes/post");
 const categoryroute = require("./models/Category");
-const multer = require('multer')
+const multer = require("multer");
 
 app.use(express.json());
 
