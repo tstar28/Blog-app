@@ -10,16 +10,12 @@ const path = require("path");
 
 require("dotenv").config();
 const app = express();
-app.use("/images", express.static(path.join(__dirname, "/images")));
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true,
-  })
-);
+app.use("/images", express.static(path.join(__dirname, "/images")));
+
+
+
 
 mongoose
   .connect(process.env.MONGO_URL, {
