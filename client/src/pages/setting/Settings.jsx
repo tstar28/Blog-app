@@ -11,6 +11,7 @@ export default function Settings() {
   const [email, setEmail] = useState(user?user.email:null);
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState(false);
+  const [profileDesc,setProfileDesc] = useState(user?.profileDesc);
 
   
   const PF = "http://localhost:5000/images/"
@@ -23,6 +24,7 @@ export default function Settings() {
       username,
       email,
       password,
+      profileDesc: profileDesc,
     };
     if (file) {
       const data = new FormData();
@@ -85,6 +87,8 @@ export default function Settings() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          <label>Profile Description</label>
+          <input type="message" value={profileDesc} onChange={(e)=>{setProfileDesc(e.target.value)}}></input>
           <button className="settingsSubmit" type="submit">
             Update
           </button>

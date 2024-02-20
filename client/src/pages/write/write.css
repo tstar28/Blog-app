@@ -32,7 +32,14 @@
   justify-content: center;
   cursor: pointer;
 }
-
+.textcss{
+  background-color: rgb(229, 225, 225);
+  border-radius: 2%;
+}
+.catcss{
+  background-color: rgb(241, 237, 237);
+  border-radius: 10px;
+}
 .writeInput {
   font-size: 30px;
   border: none;
@@ -51,11 +58,17 @@
 
 .writeText {
   width: 70vw;
-  height: 100vh;
+  height: 50vh;
   font-family: inherit;
   font-size: 20px;
 }
-
+.catText{
+  margin-top: 2%;
+  width: 70vw;
+  height: 5vh;
+  font-family: inherit;
+  font-size: 20px;
+}
 .writeSubmit {
   position: absolute;
   top: 20px;

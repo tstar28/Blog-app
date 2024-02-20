@@ -25,10 +25,8 @@ export default function Sidebar() {
         ) : (
           <img src="" alt="" />
         )}
-
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate qui
-          necessitatibus nostrum illum reprehenderit.
+          {user?.profileDesc}
         </p>
       </div>
       <div className="sidebarItem">

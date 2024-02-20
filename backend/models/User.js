@@ -20,6 +20,10 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
+    profileDesc:{
+      type: String,
+      default:"You can provide a description and update your profile"
+    },
   },
   { timestamps: true }
 );

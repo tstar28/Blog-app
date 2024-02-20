@@ -2,12 +2,27 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/User");
 const Post = require("../models/Post");
-
+const Category = require("../models/Category");
 //create post
 router.post("/", async (req, res) => {
   try {
     const newPost = new Post(req.body);
     const savedPost = await newPost.save();
+    const categories = req.body.categories;
+    categories.forEach(async(cat) => {
+      try{
+        const catExist = await Category.findOne({name:cat});
+        if(!catExist){
+        const newCat = new Category({
+          name: cat
+        });
+        newCat.save();
+      }
+      }
+      catch(err){
+        res.status(500).json(err);
+      }
+    });
     res.status(200).json(savedPost);
   } catch (err) {
     res.status(500).json(err);
