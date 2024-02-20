@@ -11,7 +11,7 @@ export default function Home() {
   const {search} = useLocation();
   useEffect(()=>{
     const fn = async ()=>{
-      const response = await axios.get('http://localhost:5000/api/post'+search);
+      const response = await axios.get('https://tblogapp.onrender.com/api/post'+search);
       setPosts(response.data);
     }
     fn();

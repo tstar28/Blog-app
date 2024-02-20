@@ -14,7 +14,7 @@ export default function Settings() {
   const [profileDesc,setProfileDesc] = useState(user?.profileDesc);
 
   
-  const PF = "http://localhost:5000/images/"
+  const PF = "https://tblogapp.onrender.com/images/"
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,11 +33,11 @@ export default function Settings() {
       data.append("file", file);
       updatedUser.profilePic = filename;
       try {
-        await axios.post("/upload", data);
+        await axios.post("https://tblogapp.onrender.com/api/upload", data);
       } catch (err) {}
     }
     try {
-      const res = await axios.put("/users/" + user._id, updatedUser);
+      const res = await axios.put("https://tblogapp.onrender.com/api/users/" + user._id, updatedUser);
       setSuccess(true);
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
     } catch (err) {

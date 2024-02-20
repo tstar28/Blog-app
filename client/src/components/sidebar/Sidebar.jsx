@@ -7,11 +7,11 @@ import { Context } from "../../Context/Context";
 export default function Sidebar() {
   const [cats, setCats] = useState([]);
   const { user } = useContext(Context);
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://tblogapp.onrender.com/images/";
 
   useEffect(() => {
     const getCats = async () => {
-      const res = await axios.get("/categories");
+      const res = await axios.get("https://tblogapp.onrender.com/api/categories");
       setCats(res.data);
     };
     getCats();

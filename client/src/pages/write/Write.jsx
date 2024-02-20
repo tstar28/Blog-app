@@ -27,14 +27,14 @@ export default function Write() {
       data.append("file", file);
 
       try {
-        await axios.post("/upload", data);
+        await axios.post("https://tblogapp.onrender.com/api/upload", data);
       } catch (err) {
         console.log(err);
       }
     }
     try {
-      const res = await axios.post("/post/", newPost);
-      window.location.replace("/post/" + res.data._id);
+      const res = await axios.post("https://tblogapp.onrender.com/api/post/", newPost);
+      window.location.replace("https://tblogapp.onrender.com/api/post/" + res.data._id);
     } catch (err) {
       console.log(err);
     }

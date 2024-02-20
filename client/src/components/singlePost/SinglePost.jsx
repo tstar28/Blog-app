@@ -9,7 +9,7 @@ export default function SinglePost() {
   const [post, setPost] = useState({});
   const location = useLocation();
   const path = location.pathname.split("/")[2];
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://tblogapp.onrender.com/images/";
   const { user } = useContext(Context);
   const [updateMode, setUpdateMode] = useState(false);
   const [title, setTitle] = useState("");
@@ -17,7 +17,7 @@ export default function SinglePost() {
 
   useEffect(() => {
     async function fn() {
-      const res = await axios.get(`/post/${path}`);
+      const res = await axios.get(`https://tblogapp.onrender.com/api/post/${path}`);
       setPost(res.data);
       setTitle(res.data.title);
       setDesc(res.data.desc);
@@ -27,7 +27,7 @@ export default function SinglePost() {
 
   async function handleUpdate(){
     try{
-      await axios.put(`/post/${post._id}`,{
+      await axios.put(`https://tblogapp.onrender.com/api/post/${post._id}`,{
         username: user.username,
         title,
         desc
@@ -41,7 +41,7 @@ export default function SinglePost() {
   async function handelDelete() {
     try {
       console.log(user.username === post.username);
-      await axios.delete(`http://localhost:5000/api/post/${post._id}`, {
+      await axios.delete(`https://tblogapp.onrender.com/api/post/${post._id}`, {
         data: { username: user.username },
       });
       window.location.replace("/");
