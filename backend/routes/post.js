@@ -16,10 +16,11 @@ router.post("/", async (req, res) => {
         const newCat = new Category({
           name: cat
         });
-        newCat.save();
-      }
+        await newCat.save();
+        }
       }
       catch(err){
+        console.log("error in post");
         res.status(500).json(err);
       }
     });
