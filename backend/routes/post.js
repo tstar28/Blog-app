@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
     for (const cat of categories) {
       try {
         const catExist = await Category.findOne({ name: cat });
-        if (!catExist) {
+        if (!catExist && cat!='') {
           const newCat = new Category({
             name: cat
           });
