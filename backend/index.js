@@ -13,7 +13,6 @@ const app = express();
 app.use("/images", express.static(path.join(__dirname, "/images")));
 
 app.use(express.json());
-app.use(cors());
 
 mongoose
   .connect(process.env.MONGO_URL, {
