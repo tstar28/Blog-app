@@ -9,26 +9,28 @@ router.post("/", async (req, res) => {
     const newPost = new Post(req.body);
     const savedPost = await newPost.save();
     const categories = req.body.categories;
-    categories.forEach(async(cat) => {
-      try{
-        const catExist = await Category.findOne({name:cat});
-        if(!catExist){
-        const newCat = new Category({
-          name: cat
-        });
-        await newCat.save();
+
+    for (const cat of categories) {
+      try {
+        const catExist = await Category.findOne({ name: cat });
+        if (!catExist) {
+          const newCat = new Category({
+            name: cat
+          });
+          await newCat.save();
         }
+      } catch (err) {
+        console.log("Error creating category:", err);
+        // Log the error and continue to the next iteration
       }
-      catch(err){
-        console.log("error in post");
-        res.status(500).json(err);
-        return;
-      }
-    });
+    }
+
     res.status(200).json(savedPost);
   } catch (err) {
+    console.log("Error creating post:", err);
     res.status(500).json(err);
   }
+
 });
 //UPDATE
 router.put("/:id", async (req, res) => {
